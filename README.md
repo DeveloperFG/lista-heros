@@ -6,3 +6,13 @@
 </p>
 
 
+# 🚀 Tecnologias Usadas
+* React + Vit
+* mongoDB
+* Api Node
+* Primas para criar tabelas
+
+<p>
+ 📝 API 
+   REPOSITORIO fullHeros   <br> 
+</p>
