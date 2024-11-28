@@ -105,8 +105,8 @@ const editeListaHeros = () =>{
 }
 
 const deletarHeros = () =>{ 
-  
-  api.delete(`/lista/${index}`, {
+
+  api.delete(`/lista/${id}`, {
   
   }).then((res) => {
 
