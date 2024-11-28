@@ -150,29 +150,29 @@ const DeleteUrl = () => {
 
       <div style={{width:'73%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:"center"}}>
 
-      <small>Digite o id:</small>
-          <input style={{ flexDirection:'row', border:'1px solid blue', backgroundColor:'transparent', width:'100%', height:'10px'}}
+     
+          <input placeholder='ID é gerado automático' style={{ flexDirection:'row', border:'1px solid black', backgroundColor:'transparent', width:'100%', height:'10px', marginBottom:'1%'}}
             value={id}
             onChange={(e)=> setId(e.target.value)}
           />
 
 
-          <small>Digite o nome:</small>
-          <input style={{ flexDirection:'row', border:'1px solid blue', backgroundColor:'transparent', width:'100%', height:'10px'}}
+        
+          <input  placeholder='Digite o nome' style={{ flexDirection:'row', border:'1px solid black', backgroundColor:'transparent', width:'100%', height:'10px', marginBottom:'1%'}}
             value={values}
             onChange={(e)=> setValues(e.target.value)}
           />
 
-        <small>Digite o atk :</small>
-                  <input style={{ flexDirection:'row', border:'1px solid blue', backgroundColor:'transparent', width:'100%', height:'10px'}}
+       
+                  <input  placeholder='Digite o atk' style={{ flexDirection:'row', border:'1px solid black', backgroundColor:'transparent', width:'100%', height:'10px', marginBottom:'1%'}}
                     value={atk}
                     onChange={(e)=> setAtk(e.target.value)}
                   />
 
         <div style={{display:'flex', alignItems:"center", justifyContent:'center', width:'100%', flexDirection:'column', marginLeft:`${avatar != '' ? '5%' : ''}` }}>
-                  <small>Avatar:</small>
+                
                  <div style={{display:'flex', alignItems:"center", justifyContent:'center', width:'100%', }}>
-                          <input style={{ flexDirection:'row', border:'1px solid blue', backgroundColor:'transparent', width:'100%', height:'10px', marginRight:`${avatar != '' ? '2%' : ''}` }}
+                          <input  placeholder='Digite a url da imagem' style={{ flexDirection:'row', border:'1px solid black', backgroundColor:'transparent', width:'100%', height:'10px', marginRight:`${avatar != '' ? '2%' : ''}` }}
                               value={avatar}
                               onChange={(e)=> setAvatar(e.target.value)}
                         />
