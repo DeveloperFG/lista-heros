@@ -94,7 +94,11 @@ const editeListaHeros = () =>{
       avatar: avatar
   }
 
-    alert('Editado com sucesso!')
+    alert('Atualizado com sucesso!')
+    setId('')
+    setValues('')
+    setAtk('')
+    setAvatar('')
     setLista(list => [...list ])
     setControl(!control)
 
@@ -183,14 +187,15 @@ const DeleteUrl = () => {
                 
 
           
-      <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-          <button style={{ width:'150px', height:'30px', marginRight:'5px'  }} onClick={ListaHeros}>LISTAR </button>
-          <button style={{  width:'150px', height:'30px', marginRight:'5px' }} onClick={addListaHeros}>ADICIONAR </button>
+      <div style={{display:'flex', width:'100%', flexDirection:'column' , marginBottom:'2%'}} >
+          {/* <button onClick={ListaHeros}>LISTAR </button> */}
+          <button style={{width:"100%", marginBottom:'-1%'}} onClick={addListaHeros}>ADICIONAR </button>
+          <button style={{width:"100%", marginBottom:'-1%'}} onClick={editeListaHeros}>ATUALIZAR</button>
+          <button style={{width:"100%"}} onClick={deletarHeros}>DELETAR </button>
       </div>
 
       <div style={{display:'flex', alignItems:'center', justifyContent:'center', marginTop:'-20%'}}>
-          <button style={{ width:'150px', height:'30px', marginRight:'5px' }} onClick={editeListaHeros}>EDITAR </button>
-          <button  style={{  width:'150px', height:'30px',marginRight:'5px' }}  onClick={deletarHeros}>DELETAR </button>
+         
 
       </div>
        
