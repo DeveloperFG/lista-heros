@@ -36,8 +36,6 @@ function ListaHeros(){
   .then((res)=> 
     // console.log(res.data),
     setLista(res.data),
-
-    handleClose()
   )
   .catch((erro)=> console.log('deu algum errro'))
   
