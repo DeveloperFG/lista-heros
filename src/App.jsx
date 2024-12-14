@@ -1,14 +1,21 @@
-import React,{ useState, useEffect } from 'react'
+import * as React from 'react';
+import {useState} from 'react';
+
 import { AiFillCloseCircle } from "react-icons/ai";
-
 import api from './api/api';
-
 import './Styles/index.css'
-
 
 
 function App() {
  
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
  const[values, setValues]= useState('')
  const[atk, setAtk]= useState('')
@@ -17,19 +24,20 @@ function App() {
  const [lista, setLista] = useState( '' || [])
 
  const[index, setIndex]= useState()
- const [control, setControl] = useState(false)
+ const [control, setControl] = useState(false)  
 
 
-
- useEffect(()=>{
-    ListaHeros()
- },[control])
+//  useEffect(()=>{
+//     ListaHeros()
+//  },[control])
 
 function ListaHeros(){
   const response = api.get('/lista')
   .then((res)=> 
     // console.log(res.data),
-    setLista(res.data)
+    setLista(res.data),
+
+    handleClose()
   )
   .catch((erro)=> console.log('deu algum errro'))
   
@@ -137,14 +145,29 @@ const deletarHeros = () =>{
 
 }
 
- 
+  const filtrarHeroById = () =>{ 
+
+    api.get(`/lista/${id}`, {
+    
+    }).then((res) => {
+
+      setLista(res.data)
+      setControl(!control)
+
+    }).catch((err)=>{
+      console.log('deu algum erro!' + err)
+    })
+
+  }
+
+  
 const DeleteUrl = () => {
     setAvatar('')
 }
 
-
   return (
     <div className="container">
+
       <h1 style={{marginTop:'5%', marginBottom:'5%'}}>CRUD HEROS </h1>
       
 
@@ -188,10 +211,13 @@ const DeleteUrl = () => {
 
           
       <div style={{display:'flex', width:'100%', flexDirection:'column' , marginBottom:'2%'}} >
-          {/* <button onClick={ListaHeros}>LISTAR </button> */}
+          {/* <button onClick={ListaHeros}>LISTAR </button>  */}
           <button style={{width:"100%", marginBottom:'-1%'}} onClick={addListaHeros}>ADICIONAR </button>
           <button style={{width:"100%", marginBottom:'-1%'}} onClick={editeListaHeros}>ATUALIZAR</button>
-          <button style={{width:"100%"}} onClick={deletarHeros}>DELETAR </button>
+          <button style={{width:"100%", marginBottom:'-1%'}} onClick={deletarHeros}>DELETAR </button>
+          <button style={{width:"100%", marginBottom:'-1%'}} onClick={ListaHeros}>LISTAR TODOS HEROIS </button>
+          <button style={{width:"100%"}} onClick={filtrarHeroById}>LISTA HEROI POR ID </button>
+  
       </div>
 
       <div style={{display:'flex', alignItems:'center', justifyContent:'center', marginTop:'-20%'}}>
