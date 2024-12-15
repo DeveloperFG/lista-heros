@@ -10,6 +10,9 @@ function App() {
  
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
+  const [load, setLoad] = useState(false);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -32,14 +35,17 @@ function App() {
 //  },[control])
 
 function ListaHeros(){
+  setLoad(true)
+
   const response = api.get('/lista')
   .then((res)=> 
     // console.log(res.data),
     setLista(res.data),
+    setLoad(false)
   )
   .catch((erro)=> console.log('deu algum errro'))
-  
-}
+    setLoad(false)
+} 
 
 const addListaHeros = () =>{ 
 
@@ -232,7 +238,10 @@ const DeleteUrl = () => {
 
       {lista == '' ?  <small>Nenhum item cadastrado...</small> :
       <>
-        {lista.map((item, index)=>{
+        {load ? 'Carregando' : 
+        (
+          <>
+          {lista.map((item, index)=>{
           return(
             <div key={index} style={{ width:'80%', height:'aito', display:'flex',
                 backgroundColor:'gray', padding:'2%',alignItems:'center', justifyContent:'space-between', borderRadius: 5, margin: 3,}} onClick={()=> selecionarHeros(item)}>
@@ -250,6 +259,10 @@ const DeleteUrl = () => {
             </div>
           )
         })}
+          </>
+        )
+        
+        }
       
       </>
       
